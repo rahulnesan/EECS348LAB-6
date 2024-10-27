@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Multiplication Table</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            margin-top: 20px;
+            width: 50%;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <h1>Multiplication Table Generator</h1>
+    <form method="post">
+        <label for="size">Enter a number:</label>
+        <input type="number" id="size" name="size" required>
+        <button type="submit">Generate Table</button>
+    </form>
+
+    <?php
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        $size = intval($_POST['size']); // Get and convert input to integer
+        
+        if ($size > 0) {
+            echo "<h2>Multiplication Table up to $size</h2>";
+            echo "<table>";
+            echo "<tr><th></th>"; // Empty top-left corner
+            for ($i = 1; $i <= $size; $i++) {
+                echo "<th>$i</th>"; // Column headers
+            }
+            echo "</tr>";
+            for ($i = 1; $i <= $size; $i++) {
+                echo "<tr><th>$i</th>"; // Row headers
+                for ($j = 1; $j <= $size; $j++) {
+                    echo "<td>" . ($i * $j) . "</td>"; // Multiplication result
+                }
+                echo "</tr>";
+            }
+            echo "</table>";
+        } else {
+            echo "<p>Please enter a positive number.</p>";
+        }
+    }
+    ?>
+</body>
+</html>

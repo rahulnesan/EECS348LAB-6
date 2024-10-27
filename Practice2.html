@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Practice 2: CSS Font Control</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function changeStyle() {
+            const color = document.getElementById('color').value;
+            const border = document.getElementById('border').value;
+            const text = document.getElementById('text');
+
+            text.style.color = `rgb(${color})`;
+            text.style.border = `${border}px solid rgb(${color})`;
+        }
+    </script>
+</head>
+<body>
+    <h1>CSS Font Control</h1>
+    <p id="text">This is a sample paragraph. Change my style using RGB values below.</p>
+    <label for="color">Enter RGB Color:</label>
+    <input type="text" id="color" placeholder="e.g., 255,0,0">
+    <label for="border">Border Width:</label>
+    <input type="number" id="border" placeholder="e.g., 5">
+    <button onclick="changeStyle()">Apply Style</button>
+</body>
+</html>
